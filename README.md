@@ -147,13 +147,11 @@ concurrently "cd server && npm run dev" "cd client && npm run dev"
 ### Documents
 
 - `POST /api/docs/upload` - Upload document
-
   - Headers: `x-session-id`
   - Body: `multipart/form-data` with `file`
   - Response: `{ documentId, filename, ... }`
 
 - `GET /api/docs` - List documents
-
   - Headers: `x-session-id`
   - Response: `[{ _id, filename, stats, ... }]`
 
@@ -164,23 +162,19 @@ concurrently "cd server && npm run dev" "cd client && npm run dev"
 ### Quizzes
 
 - `POST /api/quizzes` - Create quiz (async)
-
   - Headers: `x-session-id`
   - Body: `{ documentId, params: { count, language, difficulty } }`
   - Response: `{ jobId, quizId }`
 
 - `GET /api/jobs/:jobId` - Check job status
-
   - Headers: `x-session-id`
   - Response: `{ status, progress, logs, ... }`
 
 - `GET /api/quizzes/:quizId` - Get questions (without answers)
-
   - Headers: `x-session-id`
   - Response: `{ quiz, questions }`
 
 - `POST /api/quizzes/:quizId/submit` - Submit answers
-
   - Headers: `x-session-id`
   - Body: `{ answers: [0, 2, 1, ...] }`
   - Response: `{ score, results: [{ correct, explanation, citations }] }`
@@ -288,58 +282,3 @@ MIT
 ## Contributing
 
 Pull requests welcome!
-
-```
-
----
-
-## `/.gitignore`
-```
-
-# Dependencies
-
-node_modules/
-.pnp
-.pnp.js
-
-# Environment variables
-
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Logs
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# Build outputs
-
-dist/
-build/
-\*.tsbuildinfo
-
-# IDE
-
-.vscode/
-.idea/
-_.swp
-_.swo
-\*~
-
-# OS
-
-.DS_Store
-Thumbs.db
-
-# Uploads
-
-uploads/
-
-# Test coverage
-
-coverage/
